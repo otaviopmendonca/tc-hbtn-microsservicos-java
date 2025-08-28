@@ -1,0 +1,31 @@
+O que é Spring Boot Framework?
+    O Spring Boot é o mais popular Framework de para desenvolvimento de microsserviços. Ele fornece vários projetos de
+    extensão no Spring Cloud, para criar o ecossistema necessário para os microsserviços. Os microsserviços permitem que
+    grandes sistemas sejam construídos a partir de vários componentes de colaboração.
+
+Quais são os benefícios e recursos que Spring Boot fornece?
+    - Gerenciamento de dados: o Spring possui vários módulos para integrar facilmente com bancos de dados populares.
+    Spring JDBC, Spring JPA, Spring MongoDB, Spring Apache Cassandra são algumas extensões.
+    - Estratégias para lidar com falhas: O Spring boot tem uma fácil integração com o Resilience4J. Ele fornece várias
+    funcionalidades para lidar com falhas no sistema distribuído. Circuit Breakers, Retry, Timeout, Rate Limiters, Fallback
+    handler, Bulkheads etc.
+    - Observabilidade: o Spring Boot Actuator é poderoso, fornece verificação de integridade, visualiza logs, métricas.
+    - Integração de camada intermediária - Com a ajuda de vários módulos, o Spring fornece abstração para integração com o
+    Apache Kafka, qualquer AMQP, RabbitMQ, ActiveMQ
+    - Segurança - Spring Security, bom suporte para OAuth2, gerenciamento de sessões, possível criar serviços com e sem
+    estado. Key Vault, padrões de gateway
+    - Desempenho - Suporte de captura, balanceamento de carga e cluster com o Spring Cloud Cluster
+    - Formato de dados de comunicação - JSON, XML
+    - Fácil de aprender devido à modularidade
+
+Como é feita a adição de novas dependências (JPA, Hibernate, etc…) ?
+    A adição de novas depêndencias é realizada através do Maven por meio do arquivo pom.xml
+
+Na sua opinião, qual é a melhor IDE para trabalhar com o Spring Boot: Spring Tools Suites, IntelliJ IDEA, Eclipse ou NetBeans ?
+    Ainda não trabalhei com Spring Boot, mas pelo que estudei, a A Spring Tools Suites parece ser a mais utilizada e irei
+    começar com ela.
+
+O que é Spring Initializr?
+    O Spring Initializr é uma ferramenta online que facilita a criação de projetos com Spring Boot, nela é possíevel configurar
+    a versão do Spring Boot, tipo de projeto, linguagem de programação, e dependências.
+    Depois de configurar tudo, é gerado um .zip configurado, pronto para ser usado no seu projeto.
