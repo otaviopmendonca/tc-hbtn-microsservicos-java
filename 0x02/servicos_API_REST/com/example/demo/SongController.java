@@ -1,3 +1,12 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class SongController {
 
@@ -6,31 +15,47 @@ public class SongController {
 
     @GetMapping("/welcome")
     public String mensagemBoasVindas() {
-        // TODO
+        return "Bem-vindo ao serviço de músicas!";
     }
 
     @GetMapping(path = "/allSongs")
     public List<Song> getAllSongs() {
-        // TODO
+        return songRepository.getAllSongs();
     }
 
     @GetMapping(path = "/findSong/{id}")
-    public Song findSongById(@PathVariable Integer id) {
-        // TODO
+    public ResponseEntity<Song> findSongById(@PathVariable Integer id) {
+        Optional<Song> song = Optional.ofNullable(songRepository.getSongById(id));
+        if (song.isPresent()) {
+            return ResponseEntity.ok(song.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping(path = "/addSong", consumes = "application/json", produces = "application/json")
-    public Song addSong(@RequestBody Song song) {
-        // TODO
+    public ResponseEntity<Song> addSong(@RequestBody Song song) {
+        songRepository.addSong(song);
+        return ResponseEntity.status(HttpStatus.CREATED).body(song);
     }
 
     @PutMapping(path = "/updateSong", consumes = "application/json", produces = "application/json")
-    public Song updadeSong(@RequestBody Song song) {
-        // TODO
+    public ResponseEntity<Song> updateSong(@RequestBody Song song) {
+        try {
+            songRepository.updateSong(song);
+            return ResponseEntity.ok(song);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping(path = "/removeSong", consumes = "application/json", produces = "application/json")
-    public void deleteSongById(@RequestBody Song song) {
-        // TODO
+    public ResponseEntity<Void> deleteSongById(@RequestBody Song song) {
+        try {
+            songRepository.removeSong(song);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
